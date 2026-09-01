@@ -1,0 +1,116 @@
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/LOGO_UMNG.png" alt="Universidad Militar Nueva Granada">
+      <div>
+        <h1>Universidad Militar<br>Nueva Granada</h1>
+        <small>Ingeniería en Multimedia</small>
+      </div>
+    </div>
+
+    <div class="filter-title">Filtros macro SNIES</div>
+    <div class="filter-group">
+      <div class="filter-box"><label>Año</label><select id="fYear"></select></div>
+      <div class="filter-box"><label>Semestre</label><select id="fSemester"></select></div>
+      <div class="filter-box"><label>Ámbito</label><select id="fScope">
+        <option value="ALL">UMNG + programas pares</option>
+        <option value="UMNG">Solo UMNG</option>
+        <option value="PAIRS">Solo programas pares</option>
+      </select></div>
+      <div class="filter-box"><label>Sector IES</label><select id="fSector"></select></div>
+      <div class="filter-box"><label>Modalidad</label><select id="fModality"></select></div>
+      <div class="filter-box"><label>Departamento de oferta</label><select id="fDept"></select></div>
+      <div class="filter-box"><label>Institución</label><select id="fInstitution"></select></div>
+    </div>
+    <button id="clearFilters" class="clear-btn">Restablecer filtros</button>
+
+    <nav class="nav">
+      <button class="active" data-page="overview">▦ Visión general</button>
+      <button data-page="benchmark">◫ Comparativo de programas</button>
+      <button data-page="ibc">◉ Inserción laboral / IBC</button>
+      <button data-page="data">▤ Datos y trazabilidad</button>
+    </nav>
+
+    <div class="sidebar-note">
+      Los gráficos de institución, sector, modalidad y tendencia admiten selección por clic. 
+      Un clic aplica el filtro correspondiente y sincroniza el resto del tablero.
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="title-wrap">
+        <h2>Tablero de análisis — Ingeniería en Multimedia</h2>
+        <p>SNIES 2020–2024 · Oferta comparable · IBC de recién graduados 2016–2023</p>
+      </div>
+      <div class="top-actions">
+        <span class="badge red">Código CA 10993</span>
+        <span class="badge">SNIES UMNG activo 10993</span>
+        <span class="badge" id="periodBadge">Periodo: —</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <div id="chips" class="filter-chips"></div>
+
+      <section id="page-overview" class="page active">
+        <div class="grid-kpi">
+          <div class="kpi"><div class="label">Matriculados</div><div id="kMat" class="value">—</div><div id="kMatSub" class="sub"></div></div>
+          <div class="kpi"><div class="label">Inscritos</div><div id="kIns" class="value">—</div><div id="kInsSub" class="sub"></div></div>
+          <div class="kpi"><div class="label">Admitidos</div><div id="kAdm" class="value">—</div><div id="kAdmSub" class="sub"></div></div>
+          <div class="kpi"><div class="label">Primer curso</div><div id="kFirst" class="value">—</div><div id="kFirstSub" class="sub"></div></div>
+          <div class="kpi"><div class="label">Graduados</div><div id="kGrad" class="value">—</div><div id="kGradSub" class="sub"></div></div>
+          <div class="kpi"><div class="label">Relación admitidos / inscritos</div><div id="kRate" class="value">—</div><div id="kRateSub" class="sub"></div></div>
+        </div>
+
+        <div id="insights" class="insights"></div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head">
+              <div><h3>Evolución por semestre</h3><p>Serie temporal del indicador seleccionado. Clic sobre un punto para filtrar el periodo.</p></div>
+              <select id="trendMetric" class="local-filter">
+                <option value="MATRICULADOS">Matriculados</option>
+                <option value="INSCRITOS">Inscritos</option>
+                <option value="ADMITIDOS">Admitidos</option>
+                <option value="PRIMER_CURSO">Primer curso</option>
+                <option value="GRADUADOS">Graduados</option>
+              </select>
+            </div>
+            <div class="card-body"><div id="trendChart" class="chart"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Instituciones por matriculados</h3><p>Ranking del periodo visible más reciente. Clic en una barra para filtrar una IES.</p></div></div>
+            <div class="card-body"><div id="institutionChart" class="chart"></div></div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-head"><div><h3>Distribución por sector</h3><p>Matriculados del periodo visible más reciente.</p></div></div>
+            <div class="card-body"><div id="sectorChart" class="chart short"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Distribución por modalidad</h3><p>Matriculados del periodo visible más reciente.</p></div></div>
+            <div class="card-body"><div id="modalityChart" class="chart short"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Embudo de demanda y acceso</h3><p>Inscritos → admitidos → primer curso, periodo más reciente.</p></div></div>
+            <div class="card-body"><div id="funnelChart" class="chart short"></div></div>
+          </div>
+        </div>
+
+        <div class="grid-2 equal">
+          <div class="card">
+            <div class="card-head"><div><h3>Matriculados por departamento</h3><p>Concentración geográfica de la oferta en el último periodo visible.</p></div></div>
+            <div class="card-body"><div id="deptChart" class="chart"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Participación UMNG frente al mercado comparable</h3><p>Cuota de matriculados por semestre dentro de los registros comparables disponibles.</p></div></div>
+            <div class="card-body"><div id="shareChart" class="chart"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARATIVO -->
+      
