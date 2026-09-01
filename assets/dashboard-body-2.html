@@ -1,0 +1,102 @@
+<section id="page-benchmark" class="page">
+        <div class="section-title">
+          <div><h2>Comparativo de oferta académica</h2><p>Metadatos de programas relacionados: créditos, duración, costo, modalidad y reconocimiento.</p></div>
+          <label style="font-size:11px;color:#475569"><input id="includeInactive" type="checkbox"> Incluir programa UMNG histórico/inactivo</label>
+        </div>
+
+        <div id="benchmarkNotice" class="notice">
+          La comparación usa la oferta registrada en la hoja <b>Programas</b>. Los filtros de sector, modalidad, departamento e institución del panel lateral también se aplican en esta vista.
+        </div>
+
+        <div class="small-grid">
+          <div class="mini-card"><div class="t">Programas visibles</div><div id="bPrograms" class="v">—</div><div class="s">Registros comparables</div></div>
+          <div class="mini-card"><div class="t">IES visibles</div><div id="bIes" class="v">—</div><div class="s">Instituciones únicas</div></div>
+          <div class="mini-card"><div class="t">Mediana matrícula</div><div id="bTuition" class="v">—</div><div class="s">Programas con costo informado</div></div>
+          <div class="mini-card"><div class="t">Mediana de créditos</div><div id="bCredits" class="v">—</div><div class="s">Créditos académicos</div></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head"><div><h3>Costo de matrícula por programa</h3><p>Valor informado para estudiantes nuevos. UMNG se resalta en rojo.</p></div></div>
+            <div class="card-body"><div id="tuitionChart" class="chart tall"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Costo vs. créditos</h3><p>Relación entre carga académica y matrícula informada.</p></div></div>
+            <div class="card-body"><div id="scatterChart" class="chart tall"></div></div>
+          </div>
+        </div>
+
+        <div class="grid-2 equal">
+          <div class="card">
+            <div class="card-head"><div><h3>Programas por modalidad</h3><p>Oferta vigente dentro de los filtros seleccionados.</p></div></div>
+            <div class="card-body"><div id="programModalityChart" class="chart short"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Reconocimiento del Ministerio</h3><p>Distribución de registros según reconocimiento reportado.</p></div></div>
+            <div class="card-body"><div id="recognitionChart" class="chart short"></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><div><h3>Detalle de programas comparables</h3><p>La tabla responde a los filtros macro y al control de inactivos.</p></div></div>
+          <div class="table-wrap"><table id="programTable"></table></div>
+        </div>
+      </section>
+
+<section id="page-ibc" class="page">
+        <div class="section-title">
+          <div><h2>Inserción laboral — distribución del IBC estimado</h2><p>Recién graduados de Ingeniería en Multimedia UMNG, por rangos de SMMLV.</p></div>
+          <select id="ibcYear" class="local-filter"></select>
+        </div>
+        <div class="notice">
+          La distribución del IBC corresponde a los datos OLE suministrados para la Universidad Militar Nueva Granada, programa Ingeniería en Multimedia, nivel universitario de pregrado.
+          La gráfica de <b>Vinculación laboral</b> utiliza la serie de <b>tasa de cotización</b> contenida en el archivo adicional suministrado, para los años de vinculación 2008–2023.
+        </div>
+
+        <div class="small-grid">
+          <div class="mini-card"><div class="t">Registros IBC</div><div id="iTotal" class="v">—</div><div class="s" id="iTotalSub"></div></div>
+          <div class="mini-card"><div class="t">IBC ≥ 2,5 SMMLV</div><div id="iHigh" class="v">—</div><div class="s">Participación del año seleccionado</div></div>
+          <div class="mini-card"><div class="t">IBC &gt; 4 SMMLV</div><div id="iAbove4" class="v">—</div><div class="s">Participación del año seleccionado</div></div>
+          <div class="mini-card"><div class="t">Rango modal</div><div id="iMode" class="v" style="font-size:16px">—</div><div class="s">Mayor frecuencia del año visible</div></div>
+        </div>
+
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-head"><div><h3>Estructura del IBC por año</h3><p>Distribución porcentual por rangos de SMMLV, con arreglo visual de barras horizontales.</p></div></div>
+          <div class="card-body"><div id="ibcStructChart" class="chart tall"></div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h3>Vinculación laboral por IES — histórico</h3>
+              <p>Serie de tiempo · Eje X fijo: 2008–2023 · Eje Y ascendente: 0 % a 100 % · Etiquetas de dato en cada punto.</p>
+            </div>
+          </div>
+          <div class="card-body"><div id="laborLinkChart" class="chart tall"></div></div>
+        </div>
+      </section>
+
+      <section id="page-data" class="page">
+        <div class="section-title">
+          <div><h2>Datos filtrados y trazabilidad</h2><p>Consulta detallada de los registros SNIES utilizados en el tablero.</p></div>
+          <div class="toolbar">
+            <input id="tableSearch" class="search" placeholder="Buscar en la tabla…">
+            <button id="exportCsv" class="action-btn">Exportar CSV filtrado</button>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card"><div class="card-head"><div><h3>SNIES</h3><p id="dataCount">—</p></div></div><div class="legend-note">140 registros semestrales disponibles en la extracción original, correspondientes al periodo 2020–2024.</div></div>
+          <div class="card"><div class="card-head"><div><h3>Oferta comparable</h3><p>17 registros de programas relacionados.</p></div></div><div class="legend-note">Incluye programa UMNG activo SNIES 10993, registro histórico 52460 y programas pares comparables.</div></div>
+          <div class="card"><div class="card-head"><div><h3>IBC / OLE</h3><p>2016–2023.</p></div></div><div class="legend-note">Distribución del IBC estimado por rangos de SMMLV para recién graduados del programa UMNG.</div></div>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap"><table id="sniesTable"></table></div>
+        </div>
+      </section>
+
+      <div class="footer">Tablero HTML interactivo generado a partir de los archivos suministrados. Universidad Militar Nueva Granada · Ingeniería en Multimedia.</div>
+    </div>
+  </main>
+</div>
