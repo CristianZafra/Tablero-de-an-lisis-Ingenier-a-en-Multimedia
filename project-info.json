@@ -1,0 +1,11 @@
+{
+  "project": "Tablero Ingeniería en Multimedia — UMNG",
+  "entrypoint": "index.html",
+  "github_pages_ready": true,
+  "data": {
+    "snies": "data/snies-01.json ... data/snies-10.json",
+    "programas": "data/programs.json",
+    "ibc": "data/ibc.json",
+    "vinculacion_laboral": "data/labor.json"
+  }
+}
